@@ -3,6 +3,8 @@ import React from "react";
 
 const CardSelection = (props) => {
     const {cards} = props;
+    const copy = cards.slice();
+    console.log(cards)
     const scrambleCards = (cards) => {
         let numIter = cards.length;
         let output = [];
@@ -15,12 +17,12 @@ const CardSelection = (props) => {
         return output;
     };
     
-    let scrambledCards = scrambleCards(cards);
+    let scrambledCards = scrambleCards(copy);
     console.log(scrambledCards)
     return (
         <div>
             CardSelection here!
-            {scrambledCards.forEach((e) => <div>{e}</div>)}            
+            {scrambledCards.map((e) => <div key={e}>{e}</div>)}            
         </div>
     )
 }
