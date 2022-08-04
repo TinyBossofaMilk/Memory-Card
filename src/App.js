@@ -35,6 +35,9 @@ function App() {
 
   return (
     <div className="App">
+      <div> ExistingCards here
+            {cards.forEach((e) => <div>{e}</div>)}            
+        </div>
       <Scoreboard score={score}/>
       <CardSelection cards={cards}/>
       <GameOverScreen />
