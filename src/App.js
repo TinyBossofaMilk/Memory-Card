@@ -15,9 +15,17 @@ function App() {
   //   setScore(0);
   // })();
 
-  const collision = (selectedCard) => {
-    if(history.indexOf(selectedCard) === -1){
-      setHistory(history.push(selectedCard));
+  const isPreviouslySelected = (selectedCard) => {
+
+  };
+
+  const onCardClick = (e) => {
+    console.log(e.target)
+    console.log(history)
+    if(history.indexOf(e.key) === -1){
+      setHistory(history.push(e.key));
+      console.log(typeof history)
+      console.log(history)
       setScore(score + 1);
       
       if(score === setHistory.length){
@@ -29,18 +37,14 @@ function App() {
     }
   };
 
-  const onCardClick = (e) => {
-
-  };
-
   return (
     <div className="App">
       {/* <div> ExistingCards here
             {cards.map((e) => {return <div key={e}>{e}</div>})}            
         </div> */}
       <Scoreboard score={score}/>
-      <CardSelection cards={cards}/>
-      <GameOverScreen />
+      <CardSelection cards={cards} onCardClick={onCardClick}/>
+      {gameOver ? <GameOverScreen won={score === cards.length}/> : null}
     </div>
   );
 }

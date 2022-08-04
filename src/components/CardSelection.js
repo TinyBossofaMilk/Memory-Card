@@ -2,7 +2,8 @@ import { render } from "@testing-library/react";
 import React from "react";
 
 const CardSelection = (props) => {
-    const {cards} = props;
+    const {cards, onCardClick} = props;
+
     const copy = cards.slice();
     console.log(cards)
     const scrambleCards = (cards) => {
@@ -22,7 +23,7 @@ const CardSelection = (props) => {
     return (
         <div>
             CardSelection here!
-            {scrambledCards.map((e) => <div key={e}>{e}</div>)}            
+            {scrambledCards.map((e) => <div key={e} onClick={onCardClick}>{e}</div>)}            
         </div>
     )
 }
