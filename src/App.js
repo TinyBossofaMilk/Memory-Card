@@ -2,29 +2,55 @@ import React, { useState } from "react";
 import Scoreboard from './components/Scoreboard'
 import CardSelection from "./components/CardSelection";
 import GameOverScreen from "./components/GameOverScreen";
+import uniqid from "uniqid"
 import './App.css';
 
 function App() {
-  const [cards, setCards] = useState([1, 2, 3, 4, 5]);
+  const [cards, setCards] = useState(
+    [{
+    value: 1,
+    id: uniqid()
+    },
+    {value: 2,
+    id: uniqid()
+    },
+    {value: 3,
+      id: uniqid()
+    },
+    {value: 4,
+      id: uniqid()
+    },
+    {value: 5,
+      id: uniqid()
+    }]
+  );
   const [history, setHistory] = useState([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
   // const init = (() => {
-  //   setCards([1, 2, 3, 4, 5]);
+  //   for(let i = 1; i < 6; i++){
+  //     setCards(cards.concat([{
+  //       value: i,
+  //       id: uniqid()
+  //     }]));
+  //   }
   //   setScore(0);
   // })();
 
   const isPreviouslySelected = (selectedCard) => {
-
+    
   };
 
   const onCardClick = (e) => {
-    console.log(e.target)
+    const selectedid = e.target.id;
+    // console.log(e.target.id)
     console.log(history)
-    if(history.indexOf(e.key) === -1){
-      setHistory(history.push(e.key));
-      console.log(typeof history)
+
+    if(history.length === 0 || history.every((id) => {
+      console.log(id + "//" + selectedid)
+      return id !== selectedid})){
+      setHistory(history.concat(selectedid));
       console.log(history)
       setScore(score + 1);
       
@@ -33,6 +59,7 @@ function App() {
       }
     }
     else {
+      console.log("gameOVer ran")
       setGameOver(true);
     }
   };

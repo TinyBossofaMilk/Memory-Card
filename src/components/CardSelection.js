@@ -5,7 +5,7 @@ const CardSelection = (props) => {
     const {cards, onCardClick} = props;
 
     const copy = cards.slice();
-    console.log(cards)
+    // console.log(cards)
     const scrambleCards = (cards) => {
         let numIter = cards.length;
         let output = [];
@@ -19,11 +19,11 @@ const CardSelection = (props) => {
     };
     
     let scrambledCards = scrambleCards(copy);
-    console.log(scrambledCards)
+    // console.log(scrambledCards)
     return (
-        <div>
-            CardSelection here!
-            {scrambledCards.map((e) => <div key={e} onClick={onCardClick}>{e}</div>)}            
+        <div id="card-selection">
+            {/* CardSelection here! */}
+            {scrambledCards.map((e) => <div className="card" id={e.id} keygen={e.id} onClick={onCardClick}>{e.value}</div>)}            
         </div>
     )
 }
