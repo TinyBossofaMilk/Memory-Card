@@ -2,10 +2,10 @@ import { render } from "@testing-library/react";
 import React from "react";
 
 const GameOverScreen = (props) => {
-
+    const won = props;
     
     return (
-        <div>GameOverScreen!</div>
+        <div>Game Over Screen!</div>
     )
 };
 

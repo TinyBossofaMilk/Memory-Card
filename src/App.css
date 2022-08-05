@@ -1,14 +1,15 @@
 #card-selection{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
 }
 
 #card-selection .card {
-  min-width: 30px;
-  min-height: 50px;
+  width: 1fr;
+  min-height: 1fr;
+  /* height:  ; */
   border: 1px black solid;
-  margin: 20px;
+  padding: 20px;
 }
 
 #card-selection .card:hover {

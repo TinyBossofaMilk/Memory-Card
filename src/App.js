@@ -38,8 +38,10 @@ function App() {
   //   setScore(0);
   // })();
 
-  const isPreviouslySelected = (selectedCard) => {
-    
+  const reset = () => {
+    setHistory([]);
+    setScore(0);
+    setGameOver(false);
   };
 
   const onCardClick = (e) => {
@@ -47,19 +49,19 @@ function App() {
     // console.log(e.target.id)
     console.log(history)
 
-    if(history.length === 0 || history.every((id) => {
-      console.log(id + "//" + selectedid)
-      return id !== selectedid})){
+    if(history.length === 0 || history.every((id) => {return id !== selectedid})){
       setHistory(history.concat(selectedid));
       console.log(history)
       setScore(score + 1);
       
-      if(score === setHistory.length){
+      if(score === cards.length){
         setGameOver(true);
       }
     }
     else {
-      console.log("gameOVer ran")
+      console.log("gameOver ran")
+      console.log(selectedid + "//" + history)
+
       setGameOver(true);
     }
   };
@@ -69,6 +71,7 @@ function App() {
       {/* <div> ExistingCards here
             {cards.map((e) => {return <div key={e}>{e}</div>})}            
         </div> */}
+      <button type="button" onClick={reset}>Reset</button>
       <Scoreboard score={score}/>
       <CardSelection cards={cards} onCardClick={onCardClick}/>
       {gameOver ? <GameOverScreen won={score === cards.length}/> : null}
