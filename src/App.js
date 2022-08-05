@@ -46,31 +46,20 @@ function App() {
 
   const onCardClick = (e) => {
     const selectedid = e.target.id;
-    // console.log(e.target.id)
-    console.log(history)
 
     if(history.length === 0 || history.every((id) => {return id !== selectedid})){
       setHistory(history.concat(selectedid));
-      console.log(history)
-      setScore(score + 1);
-      
-      if(score === cards.length){
-        setGameOver(true);
-      }
+      setScore(score + 1);      
+      if(score === cards.length){setGameOver(true);}
     }
     else {
-      console.log("gameOver ran")
-      console.log(selectedid + "//" + history)
-
       setGameOver(true);
     }
   };
 
   return (
     <div className="App">
-      {/* <div> ExistingCards here
-            {cards.map((e) => {return <div key={e}>{e}</div>})}            
-        </div> */}
+
       <button type="button" onClick={reset}>Reset</button>
       <Scoreboard score={score}/>
       <CardSelection cards={cards} onCardClick={onCardClick}/>

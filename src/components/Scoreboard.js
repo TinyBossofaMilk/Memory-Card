@@ -5,7 +5,6 @@ const Scoreboard = (props) => {
     const {score} = props;
     return (
         <div>
-            Scoreboard Here!
             Score: {score}
         </div>
     );
